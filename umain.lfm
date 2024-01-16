@@ -1,0 +1,339 @@
+object fMain: TfMain
+  Left = 464
+  Height = 571
+  Top = 172
+  Width = 836
+  Caption = 'Fast Files Filter'
+  ClientHeight = 571
+  ClientWidth = 836
+  LCLVersion = '3.0.0.3'
+  object Panel1: TPanel
+    Left = 0
+    Height = 40
+    Top = 0
+    Width = 836
+    Align = alTop
+    ClientHeight = 40
+    ClientWidth = 836
+    TabOrder = 0
+    object biFolderUp: TBitBtn
+      Left = 8
+      Height = 30
+      Top = 5
+      Width = 75
+      Caption = 'Up'
+      Images = ImageList1
+      ImageIndex = 0
+      OnClick = biFolderUpClick
+      TabOrder = 0
+    end
+    object edPath: TDirectoryEdit
+      Left = 88
+      Height = 23
+      Top = 8
+      Width = 653
+      Directory = 'C:\'
+      ShowHidden = False
+      ButtonWidth = 23
+      NumGlyphs = 1
+      Anchors = [akTop, akLeft, akRight]
+      MaxLength = 0
+      TabOrder = 1
+      Text = 'C:\'
+    end
+    object biFolderGo: TBitBtn
+      Left = 749
+      Height = 30
+      Top = 5
+      Width = 75
+      Anchors = [akTop, akRight]
+      Caption = 'Go'
+      OnClick = biFolderGoClick
+      TabOrder = 2
+    end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 548
+    Width = 836
+    Panels = <    
+      item
+        Width = 500
+      end    
+      item
+        Text = 'program creat de stefan.arhip@vard.com, +40730290641'
+        Width = 50
+      end>
+    SimplePanel = False
+  end
+  object PairSplitter1: TPairSplitter
+    Left = 0
+    Height = 508
+    Top = 40
+    Width = 836
+    Align = alClient
+    Position = 376
+    object PairSplitterSide1: TPairSplitterSide
+      Cursor = crArrow
+      Left = 0
+      Height = 508
+      Top = 0
+      Width = 376
+      ClientWidth = 376
+      ClientHeight = 508
+      object Panel2: TPanel
+        Left = 334
+        Height = 471
+        Top = 0
+        Width = 42
+        Align = alRight
+        ClientHeight = 471
+        ClientWidth = 42
+        TabOrder = 0
+        object buUpload: TButton
+          Left = 7
+          Height = 29
+          Top = 10
+          Width = 27
+          Caption = '>'
+          Enabled = False
+          TabOrder = 0
+        end
+        object buDelete: TButton
+          Left = 7
+          Height = 29
+          Top = 48
+          Width = 27
+          Caption = 'x'
+          Enabled = False
+          TabOrder = 1
+        end
+        object buDownload: TButton
+          Left = 7
+          Height = 29
+          Top = 88
+          Width = 27
+          Caption = '<'
+          Enabled = False
+          TabOrder = 2
+        end
+      end
+      object lvLocalFiles: TListView
+        Left = 0
+        Height = 471
+        Top = 0
+        Width = 334
+        Align = alClient
+        AutoSortIndicator = True
+        Columns = <        
+          item
+            AutoSize = True
+            Caption = 'Name'
+            Width = 47
+          end        
+          item
+            AutoSize = True
+            Caption = 'Type'
+            Width = 40
+          end        
+          item
+            Alignment = taRightJustify
+            AutoSize = True
+            Caption = 'Size'
+            Width = 35
+          end        
+          item
+            Alignment = taRightJustify
+            AutoSize = True
+            Caption = 'Date'
+            Width = 39
+          end        
+          item
+            Caption = 'Icon'
+            Visible = False
+          end>
+        HideSelection = False
+        MultiSelect = True
+        ReadOnly = True
+        RowSelect = True
+        SmallImages = ImageList1
+        SortColumn = 0
+        SortType = stBoth
+        TabOrder = 1
+        ViewStyle = vsReport
+        OnSelectItem = lvLocalFilesSelectItem
+      end
+      object pnLocal: TPanel
+        Left = 0
+        Height = 37
+        Top = 471
+        Width = 376
+        Align = alBottom
+        ClientHeight = 37
+        ClientWidth = 376
+        TabOrder = 2
+        object lf_LocalFiles: TListViewFilterEdit
+          Left = 8
+          Height = 23
+          Top = 8
+          Width = 136
+          ButtonWidth = 23
+          NumGlyphs = 1
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object hcLocalFiles: THeaderControl
+          Left = 152
+          Height = 23
+          Top = 8
+          Width = 218
+          DragReorder = False
+          Sections = <          
+            item
+              Alignment = taLeftJustify
+              Width = 120
+              Visible = True
+            end          
+            item
+              Alignment = taLeftJustify
+              Width = 120
+              Visible = True
+            end>
+          Anchors = [akTop, akLeft, akRight, akBottom]
+        end
+      end
+    end
+    object PairSplitterSide2: TPairSplitterSide
+      Cursor = crArrow
+      Left = 381
+      Height = 508
+      Top = 0
+      Width = 455
+      ClientWidth = 455
+      ClientHeight = 508
+      object ListBox1: TListBox
+        Left = 0
+        Height = 471
+        Top = 0
+        Width = 455
+        Align = alClient
+        ItemHeight = 0
+        MultiSelect = True
+        PopupMenu = PopupMenu1
+        TabOrder = 0
+      end
+      object pnRemote: TPanel
+        Left = 0
+        Height = 37
+        Top = 471
+        Width = 455
+        Align = alBottom
+        ClientHeight = 37
+        ClientWidth = 455
+        TabOrder = 1
+        object hcRemoteDevice: THeaderControl
+          Left = 152
+          Height = 23
+          Top = 8
+          Width = 286
+          DragReorder = False
+          Sections = <          
+            item
+              Alignment = taLeftJustify
+              Text = 'Seen 20220101-1230'
+              Width = 140
+              Visible = True
+            end          
+            item
+              Alignment = taLeftJustify
+              Text = 'Interval 1m'
+              Width = 120
+              Visible = True
+            end          
+            item
+              Alignment = taLeftJustify
+              Text = 'Path D:\'
+              Width = 120
+              Visible = True
+            end>
+          Anchors = [akTop, akLeft, akRight, akBottom]
+        end
+        object lf_RemoteFiles: TListFilterEdit
+          Left = 8
+          Height = 23
+          Top = 8
+          Width = 136
+          ButtonWidth = 23
+          NumGlyphs = 1
+          MaxLength = 0
+          TabOrder = 1
+        end
+      end
+    end
+  end
+  object ImageList1: TImageList
+    Left = 716
+    Top = 412
+    Bitmap = {
+      4C7A050000001000000010000000F40500000000000078DAED957B50D45514C7
+      5740794452BE1FA569038E3952D9906066A3261226EA884D9A4A1A8CF80AB09A
+      4514511E06C2A48048B0C082BA202B82C84B21505440C1101F29A9A5A0B8412E
+      BB0BB8B0607EBBE7E7E2A0EEB2DBE64C7FE49DF9CCEFEEB9E773F6DEF3FBFD76
+      793CEDA325A63F5A63078167C068DDDE071DE7BF87EA86008A50CB7F5443E1CF
+      C3FD526F40750F0F65355096FBA039C042AF1A325FE61679029DF7F0A02E039D
+      5743D95588B6223748F9E6BDD668F6E6A125672973FFC483FA4350FD1204D525
+      46B51F3A6B4320CB7446A39799C61A522F1E1419F3F1B0E30EBAEA987BC11F1D
+      1703580FF868AF5C8FF60A0FA86ABCD09CE200C96AD3276A487D4CA0102FC2C3
+      BF14782039CEBECF9B797E68AFDA80F633ABA13CB502CA138BD17EC2151D55CB
+      208DB7C5DD558FFA210B324573F2BBE8BC2D64FB8D46C785CDE838E7CD3C4F28
+      CBBE627DFC82B98B20CD72C6CDD8C96814BC0FF9E16968D83A020D1E669006BE
+      04698C35A43B47A2C9D7182D691F757549F299BB066DC5AEAC6F0BA02C744693
+      783AAEFA8EC10DEFFEA8FFFA1534F80EC19D35CFDE5745CA64743695A0EDE40A
+      B4E67D8C96FC5968CB990689C80EB702AD75DE43393B8BAAFE205A8B16A225EB
+      03D65307B48ADFC31F491370C377B44E5F163F011DBF27A0257736E4A9932017
+      BD03C5BEF19044B3BDFB0ED7E94B23ADA1ACDD0179E68790096DD09C680379FC
+      68DC091B8EEB1B06EAF4EF858E81F2720064A249ACAFAF43BAFB35C8A286A23E
+      F0555C5B6BA5DBDFC1FC532E900BDF803C7618649183D11C6E85DBFE16B8E6A9
+      FB1DB8E96E855F579AE3DA97E6B8B2D80C35AEFD50ED6284AA393C5C9A6F66D0
+      BBFC5F0CE1121E7A62887FFFDC260E437D45990F87A1BEA46019873EFED3E725
+      1A8EB872685AD3E4D71D9CAD17DAFCDF4453F5429BFF3457056F73E8B37F4DF5
+      2E468FE530B4FFD51183390CF52B43CC380CF5FFCDF3FB7F1EA3AC2F419F9836
+      7794F565F4CCD714EBCD755FDDFC385F534C933BD6A6E0715E378FF29F8D516E
+      6F35E62CA8D3486F6ECF1AC4D36E775C57FFBAF36C265E7F027D7C6DAE3E35C6
+      8D8BE3D646BE79E53114237AC6288762DA6A74E777CF35C57A3B434FA7B798AE
+      1AFAC45E8CE73EFA335C18BB19F98C336AF2D5311775CE13A30F1BEC32CFD4D4
+      3477EEDCB9B5E9E9E9CD5BB66C51CD98310304CD29466B9443B96A875C33868F
+      9D9D5D796565A5BCABAB0BA9A9A9100804B09F3CF911F6F65C8CD6288772C921
+      D7D8D8D8C9D1D1B1A4B1B151A5542A41141717834612AB317DEA547CEAE888A5
+      4B97A27B9D72C9219791CCF6572397CBD1CDCC99335178E408EC6C6D39D6BBB9
+      71B19E39E490CB98EEE4E4945D5F5FDFDED4D404C2DDDD1DDBBCBCE0B76A1507
+      CD29D6BD4EB9E490CB30353131593265CA14517979F95D894482BD7BF7C27DD9
+      3224050773D09C62B44639944B0EB9D4432323A33E6CEE606969B9D5D5D53543
+      2C16D746444428962F5FFE90A039C5688D7228971CF5ED33660C64D8B07EDAB3
+      B585ACB60F632B23540DCD7D688D72E875543BE41A312CD49F873346E8807206
+      A91DA317AFDCF31F43870CE679ADF558B989EF738BA039C5740D077B3BA3CF5C
+      E7ADF7F470130506F0151161DB10B63D00DBFCF90A8AD11AE568F317CC73FE4E
+      9C9608FF8D1BB089EF8590AD7C84056FE6E61413A7268272B4F9733E9925CE3B
+      2C02FF9B7558EBB9023F4685604F640837E77FBB0EB959FB4139DA7CDB89E33F
+      DF191E84C4F848A424EE8630211A42411407C57E080FC45BE3AD1769F32D2CCC
+      0744EF0A8368AF00C2C43D484A88C1BE9438463C52F72721263A1CFDFAF57DB9
+      B71E8A0FA420273B1D672B4A919F9B81E3C505A8FEB9023F15E62243BC5FE77F
+      D8019110D99969A8283B8EA37999283A9A8DF3D56751C8AEE969293A7DDAEF41
+      B687F2B21214303F2F27035567CB70AC209B9D2151A79FCCCE2D3E908CF2D3CC
+      CF3D845CF22BCBD85EB2B83EE8F213E3A351C4CE4AE72F2D398693A585ECFB4F
+      A3EC5409D74F2D1A3D53FDE816046FDB5895101789B8D89D888FDD05415C1423
+      12543724C8AF92E598314CE8AFA387DB9761C918408FBF96DFA1610C7A09ACD4
+      359ECB6FCFDFAF981C12
+    }
+  end
+  object PopupMenu1: TPopupMenu
+    OnPopup = PopupMenu1Popup
+    Left = 587
+    Top = 411
+    object miCopyLine: TMenuItem
+      Caption = '&Copy'
+      OnClick = miCopyLineClick
+    end
+  end
+end
